@@ -1,4 +1,7 @@
 <script setup>
+let loggedIn = false;
+
+
 </script>
 
 <template>
@@ -11,8 +14,15 @@
         <li><a href="#">Contact Us</a></li>
       </ul>
       <ul class="right">
-        <li><a href="#">Sign In</a></li>
-        <li><a href="#">Sign Up</a></li>
+        <template v-if="!loggedIn">
+          <li><a href="#">Sign In</a></li>
+          <li><a href="#">Sign Up</a></li>
+        </template>
+
+        <template v-else>
+          <li>"abc@gmail.com"</li>
+          <li>Sign Out</li>
+        </template>
       </ul>
     </nav>
   </header>
