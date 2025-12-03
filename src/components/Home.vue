@@ -14,16 +14,27 @@
       <h1>Discover our collection</h1>
       <div class="filters">
         <ul class="rarity">
-          <li><button>All</button></li>
-          <li><button>Common</button></li>
-          <li><button>Rare</button></li>
-          <li><button>Legendary</button></li>
-          <li><button>Mythical</button></li>
+          <li>
+            <button>All</button>
+          </li>
+          <li>
+            <button>Common</button>
+          </li>
+          <li>
+            <button>Rare</button>
+          </li>
+          <li>
+            <button>Legendary</button>
+          </li>
+          <li>
+            <button>Mythical</button>
+          </li>
         </ul>
-        <select>
-          <option>a</option>
-          <option>b</option>
-          <option>c</option>
+        <select class="sort-select">
+          <option>PRICE LOW-HIGH</option>
+          <option>PRICE HIGH-LOW</option>
+          <option>NAME A-Z</option>
+          <option>NAME Z-A</option>
         </select>
       </div>
     </section>
@@ -82,6 +93,7 @@ section.collection {
   height: 10vh;
 
 }
+
 section.collection h1 {
   margin: auto auto;
   color: white;
@@ -96,6 +108,7 @@ section.collection h1 {
 
   gap: 2rem;
 }
+
 .filters button {
   padding: 1rem;
   min-width: 120px;
@@ -115,6 +128,16 @@ ul.rarity {
   padding: 0;
   margin: 0;
 }
+.sort-select{
+  padding: 1rem;
+  min-width: 120px;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
 
+}
 
 </style>
