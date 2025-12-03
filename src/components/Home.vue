@@ -1,5 +1,6 @@
 <script setup>
 
+import PokemonDetails from "@/components/PokemonDetails.vue";
 </script>
 
 <template>
@@ -10,7 +11,7 @@
     </section>
 
 
-    <section class="collection">
+    <section class="filters-section">
       <h1>Discover our collection</h1>
       <div class="filters">
         <ul class="rarity">
@@ -37,6 +38,14 @@
           <option>NAME Z-A</option>
         </select>
       </div>
+    </section>
+
+
+    <section class="collection">
+    <PokemonDetails></PokemonDetails>
+
+
+
     </section>
 
 
@@ -84,7 +93,7 @@ section.hero input {
 
 /* Section 2 */
 
-section.collection {
+section.filters-section{
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -94,7 +103,7 @@ section.collection {
 
 }
 
-section.collection h1 {
+section.filters-section h1 {
   margin: auto auto;
   color: white;
   font-size: 3rem;
