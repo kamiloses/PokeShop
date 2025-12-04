@@ -43,6 +43,8 @@ import PokemonDetails from "@/components/PokemonDetails.vue";
 
     <section class="collection">
     <PokemonDetails></PokemonDetails>
+    <PokemonDetails></PokemonDetails>
+    <PokemonDetails></PokemonDetails>
 
 
 
@@ -99,12 +101,12 @@ section.filters-section{
   gap: 1rem;
   padding: 1rem;
   background-color: darkslategrey;
-  height: 10vh;
+  height: 17vh;
 
 }
 
 section.filters-section h1 {
-  margin: auto auto;
+  margin: 0 auto;
   color: white;
   font-size: 3rem;
 
@@ -147,6 +149,11 @@ ul.rarity {
   cursor: pointer;
   font-size: 1rem;
 
+
+}
+.collection {
+  display: flex;
+  justify-content: space-around;
 }
 
 </style>
