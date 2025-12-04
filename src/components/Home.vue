@@ -134,8 +134,8 @@ section.filters-section h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 50px;
-  margin-top: 50px;
+  margin-left: 9%;
+  margin-top: 1.5%;
   gap: 2rem;
 }
 
@@ -166,6 +166,7 @@ ul.rarity {
 }
 
 .sort-select {
+  margin-right: 10%;
   padding: 1rem;
   min-width: 120px;
   border: 2px solid #3b2f55;
@@ -184,9 +185,12 @@ ul.rarity {
 /*section 3*/
 .collection {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0 3rem;
   background-color: #1a1f2e;
   flex-wrap: wrap;
+
 
 }
 

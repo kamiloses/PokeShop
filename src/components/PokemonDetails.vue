@@ -38,7 +38,7 @@ const props = defineProps({
 .pokemon-card {
   width: 24vw;
   background: #fff;
-  border-radius: 1rem;
+  border-radius: 5px;
   padding: 1rem;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   display: flex;
