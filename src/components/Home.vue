@@ -1,20 +1,44 @@
 <script setup>
 
 import PokemonDetails from "@/components/PokemonDetails.vue";
-import {Pokemon} from "@/models/ Pokemon.js";
+import {Pokemon} from "@/models/Pokemon.js";
+import {computed, ref} from "vue";
 
 
-const pikachu = new Pokemon(1, 'Pikachu', 'Elektryczny Pokémon, uwielbiający sparki i przygody.', { name: 'Electric', icon: '⚡' }, 'Rare', 120);
-const bulbasaur = new Pokemon(2, 'Bulbasaur', 'Pokémon roślinny z cebulką na plecach, która rośnie z czasem.', { name: 'Grass', icon: '🌿' }, 'Common', 80);
-const charizard = new Pokemon(3, 'Charizard', 'Potężny ognisty smok, latający wysoko i ziejący ogniem.', { name: 'Fire', icon: '🔥' }, 'Legendary', 500);
+const pikachu = new Pokemon(1, 'Pikachu', 'An electric Pokémon that loves sparks and adventures.', {
+  name: 'Electric',
+  icon: '⚡'
+}, 'Rare', 120);
+
+const bulbasaur = new Pokemon(2, 'Bulbasaur', 'A plant Pokémon with a bulb on its back that grows over time.', {
+  name: 'Grass',
+  icon: '🌿'
+}, 'Common', 80);
+
+const charioted = new Pokemon(3, 'Charizard', 'A powerful fire dragon that flies high and breathes fire.', {
+  name: 'Fire',
+  icon: '🔥'
+}, 'Legendary', 500);
+
+const pokemons = [pikachu, bulbasaur, charioted];
+const rarityOptions = ['All','Common','Rare','Legendary','Mythical'];
+//od tąd
+
+let filter = ref("All");
 
 
-const pokemons=[pikachu, bulbasaur, charizard];
+function selectFilter(newFilter) {
+  filter.value = newFilter;}
+
+
+const filteredPokemons = computed(() => {
+  if (filter.value === "All") return pokemons;
+  return pokemons.filter(p => p.rarity === filter.value);
+});
+
+
+
 </script>
-
-
-
-
 
 
 <template>
@@ -29,20 +53,8 @@ const pokemons=[pikachu, bulbasaur, charizard];
       <h1>Discover our collection</h1>
       <div class="filters">
         <ul class="rarity">
-          <li>
-            <button>All</button>
-          </li>
-          <li>
-            <button>Common</button>
-          </li>
-          <li>
-            <button>Rare</button>
-          </li>
-          <li>
-            <button>Legendary</button>
-          </li>
-          <li>
-            <button>Mythical</button>
+          <li v-for="option in rarityOptions" :key="option">
+            <button @click="selectFilter(option)">{{ option }}</button>
           </li>
         </ul>
         <select class="sort-select">
@@ -57,8 +69,7 @@ const pokemons=[pikachu, bulbasaur, charizard];
 
     <section class="collection">
 
-      <PokemonDetails v-for="pokemon in pokemons"   :key="pokemon.id" :pokemon="pokemon"  ></PokemonDetails>
-
+      <PokemonDetails v-for="pokemon in filteredPokemons" :key="pokemon.id" :pokemon="pokemon"></PokemonDetails>
 
 
     </section>
@@ -108,7 +119,7 @@ section.hero input {
 
 /* Section 2 */
 
-section.filters-section{
+section.filters-section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -153,7 +164,8 @@ ul.rarity {
   padding: 0;
   margin: 0;
 }
-.sort-select{
+
+.sort-select {
   padding: 1rem;
   min-width: 120px;
   border: none;

@@ -13,17 +13,17 @@ const props = defineProps({
 <template>
   <article class="pokemon-card">
     <img src="/Pikachu.jpg" alt="Pikachu">
-    <h2>{{props.pokemon.name}}</h2>
+    <h2>{{pokemon.name}}</h2>
     <p>
-      {{props.pokemon.description}}
+      {{pokemon.description}}
     </p>
     <div class="pokemon-card-footer">
       <div class="pokemon-info">
-           <span class="pokemon-type" :class="`type-${props.pokemon.type.name.toLowerCase()}`">{{props.pokemon.type.icon}} {{props.pokemon.type.name}}</span>
-        <span class="rarity" :data-rarity="props.pokemon.rarity">{{props.pokemon.rarity }}</span>
+           <span class="pokemon-type" :class="`type-${pokemon.type.name.toLowerCase()}`">{{pokemon.type.icon}} {{pokemon.type.name}}</span>
+        <span class="rarity" :data-rarity="pokemon.rarity">{{pokemon.rarity }}</span>
       </div>
       <div class="pokemon-actions">
-        <span class="price">{{props.pokemon.price}}$</span>
+        <span class="price">{{pokemon.price}}$</span>
         <a class="details-link" href="#">View Details</a>
       </div>
     </div>
