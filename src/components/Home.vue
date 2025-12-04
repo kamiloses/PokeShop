@@ -1,7 +1,21 @@
 <script setup>
 
 import PokemonDetails from "@/components/PokemonDetails.vue";
+import {Pokemon} from "@/models/ Pokemon.js";
+
+
+const pikachu = new Pokemon(1, 'Pikachu', 'Elektryczny Pokémon, uwielbiający sparki i przygody.', { name: 'Electric', icon: '⚡' }, 'Rare', 120);
+const bulbasaur = new Pokemon(2, 'Bulbasaur', 'Pokémon roślinny z cebulką na plecach, która rośnie z czasem.', { name: 'Grass', icon: '🌿' }, 'Common', 80);
+const charizard = new Pokemon(3, 'Charizard', 'Potężny ognisty smok, latający wysoko i ziejący ogniem.', { name: 'Fire', icon: '🔥' }, 'Legendary', 500);
+
+
+const pokemons=[pikachu, bulbasaur, charizard];
 </script>
+
+
+
+
+
 
 <template>
   <main>
@@ -42,9 +56,8 @@ import PokemonDetails from "@/components/PokemonDetails.vue";
 
 
     <section class="collection">
-    <PokemonDetails></PokemonDetails>
-    <PokemonDetails></PokemonDetails>
-    <PokemonDetails></PokemonDetails>
+
+      <PokemonDetails v-for="pokemon in pokemons"   :key="pokemon.id" :pokemon="pokemon"  ></PokemonDetails>
 
 
 

@@ -1,25 +1,29 @@
 <script setup>
-
-let rarity=["Common","Rare","Legendary","Mythical"];
-let rarityvalue=rarity[2];
+const props = defineProps({
+  pokemon: {
+    type: Object,
+    required: true
+  }
+})
 
 </script>
+
+
 
 <template>
   <article class="pokemon-card">
     <img src="/Pikachu.jpg" alt="Pikachu">
-    <h2>Pikachu</h2>
+    <h2>{{props.pokemon.name}}</h2>
     <p>
-      Pikachu is an Electric-type Pokémon known for its yellow fur and powerful electric attacks.
-      It is cheerful, loyal, and one of the most recognizable Pokémon in the world.
+      {{props.pokemon.description}}
     </p>
     <div class="pokemon-card-footer">
       <div class="pokemon-info">
-        <span class="pokemon-type">⚡ Electric</span>
-        <span class="rarity" :data-rarity="rarityvalue">{{ rarityvalue }}</span>
+           <span class="pokemon-type" :class="`type-${props.pokemon.type.name.toLowerCase()}`">{{props.pokemon.type.icon}} {{props.pokemon.type.name}}</span>
+        <span class="rarity" :data-rarity="props.pokemon.rarity">{{props.pokemon.rarity }}</span>
       </div>
       <div class="pokemon-actions">
-        <span class="price">55$</span>
+        <span class="price">{{props.pokemon.price}}$</span>
         <a class="details-link" href="#">View Details</a>
       </div>
     </div>
@@ -94,6 +98,17 @@ h2 {
   font-size: 0.8rem;
   color: white;
 }
+
+
+
+.type-electric { background-color: #fdd835; color: black; }
+.type-water    { background-color: #42a5f5; }
+.type-fire     { background-color: #ef5350; }
+.type-grass    { background-color: #66bb6a; }
+.type-ice      { background-color: #81d4fa; color: black; }
+.type-psychic  { background-color: #ab47bc; }
+.type-normal   { background-color: #9e9e9e; }
+.type-flying   { background-color: #90caf9; }
 
 .rarity[data-rarity="Common"] { background: #6c757d; }
 .rarity[data-rarity="Rare"] { background: #1e88e5; }
