@@ -14,11 +14,14 @@ let rarityvalue=rarity[2];
       It is cheerful, loyal, and one of the most recognizable Pokémon in the world.
     </p>
     <div class="pokemon-card-footer">
-      <span>55$</span>
-      <span class="pokemon-type">⚡ Electric</span>
-      <span class="rarity" :data-rarity="rarityvalue">{{ rarityvalue }}
-</span>
-      <a href="#">View Details</a>
+      <div class="pokemon-info">
+        <span class="pokemon-type">⚡ Electric</span>
+        <span class="rarity" :data-rarity="rarityvalue">{{ rarityvalue }}</span>
+      </div>
+      <div class="pokemon-actions">
+        <span class="price">55$</span>
+        <a class="details-link" href="#">View Details</a>
+      </div>
     </div>
 
 
@@ -29,7 +32,7 @@ let rarityvalue=rarity[2];
 
 <style scoped>
 .pokemon-card {
-  width: 26vw;
+  width: 24vw;
   background: #fff;
   border-radius: 1rem;
   padding: 1rem;
@@ -60,62 +63,57 @@ h2 {
   line-height: 1.4;
 }
 
+
+   /*footer*/
 .pokemon-card-footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;}
-
-.pokemon-card-footer span {
-  font-weight: bold;
-  font-size: 1.3rem;
+  align-items: center;
+  gap: 1rem;
 }
+
+.pokemon-info {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+}
+
 .pokemon-type {
-  padding: 0.4rem 0.6rem;
-  background: #fcefcf;
+  background-color: #f0f0f0;
+  padding: 0.2rem 0.4rem;
   border-radius: 0.4rem;
-  font-size: 0.9rem;
-  color: #b88600;
-  order:-1;
+  font-weight: 500;
 }
 
-/*RARITY*/
 .rarity {
-  padding: 0.4rem 0.7rem;
+  padding: 0.2rem 0.4rem;
   border-radius: 0.4rem;
-  font-size: 0.9rem;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 0.8rem;
   color: white;
-  order: -1;
 }
 
-.rarity[data-rarity="Common"] {
-  background: #6c757d;
+.rarity[data-rarity="Common"] { background: #6c757d; }
+.rarity[data-rarity="Rare"] { background: #1e88e5; }
+.rarity[data-rarity="Legendary"] { background: #fbc02d; color: black; }
+.rarity[data-rarity="Mythical"] { background: #8e24aa; }
+
+.pokemon-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.rarity[data-rarity="Rare"] {
-  background: #1e88e5;
+.price {
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
-.rarity[data-rarity="Legendary"] {
-  background: #fbc02d;
-  color: black;
-}
-
-.rarity[data-rarity="Mythical"] {
-  background: #8e24aa;
-}
-
-
-
-
-
-
-
-
-a {
-  padding: 0.6rem 1.2rem;
-  background-color: #e63946;
-  color: white;
+.details-link {
+  padding: 0.5rem 1rem;
+  background-color: #1e88e5;
   text-decoration: none;
   border-radius: 0.5rem;
   font-weight: bold;
@@ -123,8 +121,5 @@ a {
 }
 
 
-a:hover {
-  background-color: #c5303a;
-}
 
 </style>

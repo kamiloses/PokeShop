@@ -116,7 +116,8 @@ section.filters-section h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  margin-left: 50px;
+  margin-top: 50px;
   gap: 2rem;
 }
 
@@ -151,9 +152,13 @@ ul.rarity {
 
 
 }
+
+/*section 3*/
 .collection {
   display: flex;
   justify-content: space-around;
+  background-color: darkslategrey;
+
 }
 
 </style>
