@@ -33,7 +33,8 @@ let loggedIn = false;
 header {
   width: 100%;
   display: flex;
-  background-color: darkslategrey;
+  background-color: #1a1f2e;
+
   align-items: center;
   color: white;
   padding: 1.3rem;

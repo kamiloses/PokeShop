@@ -1,31 +1,23 @@
 <script setup>
 
 import PokemonDetails from "@/components/PokemonDetails.vue";
-import {Pokemon} from "@/models/Pokemon.js";
 import {computed, ref} from "vue";
+import {pokemonsData} from "@/models/PokemonsData.js";
 
 
-const pikachu = new Pokemon(1, 'Pikachu', 'An electric Pokémon that loves sparks and adventures.', {
-  name: 'Electric',
-  icon: '⚡'
-}, 'Rare', 120);
+const pokemons = pokemonsData;
 
-const bulbasaur = new Pokemon(2, 'Bulbasaur', 'A plant Pokémon with a bulb on its back that grows over time.', {
-  name: 'Grass',
-  icon: '🌿'
-}, 'Common', 80);
 
-const charioted = new Pokemon(3, 'Charizard', 'A powerful fire dragon that flies high and breathes fire.', {
-  name: 'Fire',
-  icon: '🔥'
-}, 'Legendary', 500);
-
-const pokemons = [pikachu, bulbasaur, charioted];
 const rarityOptions = ['All','Common','Rare','Legendary','Mythical'];
-//od tąd
+const sortOptions=['NAME A-Z','NAME Z-A','PRICE LOW-HIGH','PRICE HIGH-LOW'];
 
-let filter = ref("All");
 
+let filter = ref(rarityOptions[0]);
+let sort=ref(sortOptions[0]);
+
+function selectSort(newSort){
+  sort.value = newSort;
+}
 
 function selectFilter(newFilter) {
   filter.value = newFilter;}
@@ -35,6 +27,11 @@ const filteredPokemons = computed(() => {
   if (filter.value === "All") return pokemons;
   return pokemons.filter(p => p.rarity === filter.value);
 });
+const sortedPokemons = computed(() => {
+  if (sort.value === "NAME A-Z") return pokemons;
+  return pokemons.filter(p => p.rarity === filter.value);
+});
+
 
 
 
@@ -58,10 +55,7 @@ const filteredPokemons = computed(() => {
           </li>
         </ul>
         <select class="sort-select">
-          <option>PRICE LOW-HIGH</option>
-          <option>PRICE HIGH-LOW</option>
-          <option>NAME A-Z</option>
-          <option>NAME Z-A</option>
+          <option  v-for="sortOption in sortOptions" :key="sortOption" @click="">{{sortOption}}</option>
         </select>
       </div>
     </section>
@@ -124,7 +118,7 @@ section.filters-section {
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  background-color: darkslategrey;
+  background-color: #1a1f2e;
   height: 17vh;
 
 }
@@ -148,12 +142,18 @@ section.filters-section h1 {
 .filters button {
   padding: 1rem;
   min-width: 120px;
-  border: none;
+  border: 2px solid #3b2f55;
   border-radius: 0.5rem;
-  background-color: green;
+  background-color: #1a1f2e;
   color: white;
   cursor: pointer;
   font-size: 1rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.filters button:hover {
+  border-color: #6a0dad;
+  background-color: #3b2f55;
 }
 
 
@@ -168,21 +168,25 @@ ul.rarity {
 .sort-select {
   padding: 1rem;
   min-width: 120px;
-  border: none;
+  border: 2px solid #3b2f55;
   border-radius: 0.5rem;
-  background-color: green;
+  background-color: #1a1f2e;
   color: white;
   cursor: pointer;
   font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
 
-
+.sort-select:hover {
+  border-color: #6a0dad;
 }
 
 /*section 3*/
 .collection {
   display: flex;
   justify-content: space-around;
-  background-color: darkslategrey;
+  background-color: #1a1f2e;
+  flex-wrap: wrap;
 
 }
 
