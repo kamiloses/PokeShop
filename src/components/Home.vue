@@ -164,7 +164,6 @@ ul.rarity {
   padding: 0;
   margin: 0;
 }
-
 .sort-select {
   margin-right: 10%;
   padding: 1rem;
